@@ -69,3 +69,17 @@
   width: 100%;
   justify-content: center;
 }
+.sa-graph {
+  card {
+    width: 100%;
+    mat-card-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      > * {
+        max-width: 350px;
+      }
+    }
+  }
+
+}

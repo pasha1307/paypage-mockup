@@ -19,11 +19,20 @@ export class PaymentsComponent implements OnInit {
     {id: 2, name: 'Account 2', total: 990},
     {id: 3, name: 'Account 3', total: 1050}
   ];
-  customData: any[] = [
+  serviceData: any[] = [
     [200, 420, 170, 522],
   ];
-  customLabels: any[] = ['Service A', 'Service B', 'Service C', 'Service D'];
-totalSum;
+  serviceLabels: any[] = ['Service A', 'Service B', 'Service C', 'Service D'];
+  totalSum;
+  applData: any[] = [
+    [498, 990],
+  ];
+  applLabels: any[] = ['Application A', 'Application B'];
+
+  locationData: any[] = [
+    [675, 522, 128, 54, 734],
+  ];
+  locationLabels: any[] = ['Data Center-1', 'Data Center-2', 'Data Center-3', 'Data Center-4', 'Data Center-5'];
   constructor() {
     this.dataSource = {
       chart: {
@@ -66,11 +75,12 @@ totalSum;
   ngOnInit() {
     this.getTotal();
   }
-getTotal() {
-   this.accounts
-     .map(el => el.total)
-     .reduce((a, b) => {
-   return this.totalSum = a + b;
-    }, 0);
-}
+
+  getTotal() {
+    this.accounts
+      .map(el => el.total)
+      .reduce((a, b) => {
+        return this.totalSum = a + b;
+      }, 0);
+  }
 }
