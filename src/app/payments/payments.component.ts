@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {MultiDataSet} from 'ng2-charts';
 
 @Component({
   selector: 'app-payments',
@@ -18,6 +19,10 @@ export class PaymentsComponent implements OnInit {
     {id: 2, name: 'Account 2', total: 990},
     {id: 3, name: 'Account 3', total: 1050}
   ];
+  customData: any[] = [
+    [200, 420, 170, 522],
+  ];
+  customLabels: any[] = ['Service A', 'Service B', 'Service C', 'Service D'];
 totalSum;
   constructor() {
     this.dataSource = {

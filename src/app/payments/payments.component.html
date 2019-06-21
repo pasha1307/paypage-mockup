@@ -10,7 +10,7 @@
 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          Services
+          ACCOUNTS
         </mat-expansion-panel-header>
               <mat-nav-list *ngFor="let op of accounts">
                 <a mat-list-item routerLink="/payments">{{op.name}}</a>
@@ -96,7 +96,28 @@
       </section>
 
       <hr mat-line>
-      <h1>From: {{picker._selected | date}} To: {{picker1._selected | date}}</h1>
+      <section class="single-account">
+        <div class="total-sum-wrap">
+          <p class="mat-headline">Balance For the Account 1</p>
+          <h1 class="mat-display-2">$1,123.00</h1>
+        </div>
+        <div class="single-account-info">
+          <p>Services</p>
+          <p>Applications</p>
+          <p>Data Services</p>
+          <div class="sa-graph">
+            <mat-card class="course-card mat-elevation-z10" style="width: 650px;">
+              <mat-card-header>
+                <mat-card-title>Share of The Cost By Service</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <app-doughnut-tpl [dataArr]="customData" [labelArr]="customLabels"></app-doughnut-tpl>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </section>
+      <hr mat-line>
       <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>
       <section class="top">
         <div class="top-div">
