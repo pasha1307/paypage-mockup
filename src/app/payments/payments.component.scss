@@ -68,18 +68,42 @@
   display: flex;
   width: 100%;
   justify-content: center;
+  .all-accounts-list {
+    max-width: 200px;
+  }
+  .monthly-card {
+    flex: 1 1 auto;
+    //max-width: 650px;
+  }
+  .curr-card {
+    flex: 1 1 auto;
+    //max-width: 500px;
+  }
 }
 .sa-graph {
   card {
     width: 100%;
-    mat-card-content {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      > * {
-        max-width: 350px;
-      }
-    }
   }
 
+}
+mat-card-content.woo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  > * {
+    flex: 1 1 auto;
+    //max-width: 350px;
+  }
+}
+.single-account-info-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  > * {
+    flex: 1 0 auto;
+    //max-width: 350px;
+  }
+  mat-list {
+    max-width: 250px;
+  }
 }

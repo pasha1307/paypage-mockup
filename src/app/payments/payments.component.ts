@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MultiDataSet} from 'ng2-charts';
+import {AccountService} from '../services/account.service';
 
 @Component({
   selector: 'app-payments',
@@ -33,7 +34,7 @@ export class PaymentsComponent implements OnInit {
     [675, 522, 128, 54, 734],
   ];
   locationLabels: any[] = ['Data Center-1', 'Data Center-2', 'Data Center-3', 'Data Center-4', 'Data Center-5'];
-  constructor() {
+  constructor(public dataService: AccountService) {
     this.dataSource = {
       chart: {
         'caption': 'Countries With Most Oil Reserves [2017-18]',
@@ -73,6 +74,11 @@ export class PaymentsComponent implements OnInit {
   }
 
   ngOnInit() {
+   this.dataService.getSingle('2').subscribe(res => {
+     const woo = res;
+     console.log('Woo', woo)
+    });
+
     this.getTotal();
   }
 

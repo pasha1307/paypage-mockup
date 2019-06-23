@@ -28,6 +28,8 @@ import { MyLineChartComponent } from './my-line-chart/my-line-chart.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { MyDoughChartComponent } from './my-dough-chart/my-dough-chart.component';
 import { DoughnutTplComponent } from './doughnut-tpl/doughnut-tpl.component';
+import { BarTplComponent } from './bar-tpl/bar-tpl.component';
+import { SingleAccountComponent } from './single-account/single-account.component';
 
 FusionChartsModule.fcRoot(FusionCharts);
 
@@ -39,7 +41,9 @@ FusionChartsModule.fcRoot(FusionCharts);
     MyLineChartComponent,
     MainNavComponent,
     MyDoughChartComponent,
-    DoughnutTplComponent
+    DoughnutTplComponent,
+    BarTplComponent,
+    SingleAccountComponent
   ],
   imports: [
     BrowserModule,
