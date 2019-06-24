@@ -13,6 +13,7 @@ export class SingleAccountComponent implements OnInit {
   @Input() totalAccount;
   @Input() accServices;
   @Input() accApps;
+  @Input() accountName;
   id;
   acc;
   total;

@@ -95,8 +95,9 @@
 
       <section class="single-account" *ngIf="!toShow">
         <hr mat-line>
-        <h2>Single Acc Num: {{acNum}} - {{totalServicePay | currency}}</h2>
+<!--        <h2>Single Acc Num: {{acNum}} - {{totalServicePay | currency}}</h2>-->
         <app-single-account
+          [accountName]="acNum"
           [totalAccount]="totalServicePay"
           [serviceData]="serviceData"
           [serviceLabels]="serviceLabels"
