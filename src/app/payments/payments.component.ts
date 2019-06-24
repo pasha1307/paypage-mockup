@@ -8,6 +8,7 @@ import {AccountService} from '../services/account.service';
   styleUrls: ['./payments.component.scss']
 })
 export class PaymentsComponent implements OnInit {
+  toShow = true;
   granTotal;
   isHandset$;
   hR;
@@ -45,18 +46,14 @@ export class PaymentsComponent implements OnInit {
   dataSource;
   barsData = [{ data: [65, 59, 80], label: 'Account 1' },
 { data: [28, 48, 40], label: 'Account 2' },
-{ data: [28, 48, 40], label: 'Account 3' }]
+{ data: [28, 48, 40], label: 'Account 3' }];
   opts: any [] = [
     {id: 1, name: 'Service 1', total: 850},
     {id: 2, name: 'Service 2', total: 990},
     {id: 3, name: 'Service 3', total: 1050},
     {id: 4, name: 'Service 4', total: 800},
   ];
-  accounts: any[] = [
-    {id: 1, name: 'Account 1', total: 850},
-    {id: 2, name: 'Account 2', total: 990},
-    {id: 3, name: 'Account 3', total: 1050}
-  ];
+  accounts: any[] = [];
   serviceData: any[] = [
     [200, 420, 170, 522],
   ];
@@ -119,18 +116,25 @@ export class PaymentsComponent implements OnInit {
     this.getTotalHoursCost(2);
     this.accountsArr = [(((this.sumAcc1Serv + this.sumAcc1Apps)/12).toFixed(1)),
       (((this.sumAcc2Serv + this.sumAcc2Apps)/12).toFixed(1)),
-      (((this.sumAcc1Serv + this.sumAcc1Apps)/12).toFixed(1))
+      (((this.sumAcc3Serv + this.sumAcc3Apps)/12).toFixed(1))
+    ];
+    this.accounts = [
+      {id: 1, name: 'Account 1', total: (((this.sumAcc1Serv + this.sumAcc1Apps)/12).toFixed(1)) },
+      {id: 2, name: 'Account 2', total: (((this.sumAcc2Serv + this.sumAcc2Apps)/12).toFixed(1)) },
+      {id: 3, name: 'Account 3', total: (((this.sumAcc3Serv + this.sumAcc3Apps)/12).toFixed(1)) },
     ];
   }
+
   getGran() {
-    return this.granTotal = ((this.sumAcc1Serv + this.sumAcc2Serv + this.sumAcc3Serv + this.sumAcc2Apps + this.sumAcc3Apps + this.sumAcc3Apps) / 12).toFixed(1);
+    return this.granTotal = ((this.sumAcc1Serv + this.sumAcc2Serv + this.sumAcc3Serv + this.sumAcc1Apps + this.sumAcc2Apps + this.sumAcc3Apps) / 12).toFixed(1);
   }
-  getTotalAcc(accNo) {
-    console.log(accNo)
-  }
+
   getAppsDetail(accNo) {
     this.alP = this.dataService.getAllApps(accNo);
     this.alS = this.dataService.getAllServices(accNo);
+  }
+  onAllShow() {
+    this.toShow = true;
   }
   onSumServ(accNo) {
     this.totalPayService = this.dataService.getSumServ(accNo);
@@ -143,6 +147,7 @@ export class PaymentsComponent implements OnInit {
     const pt = this.allAppsPay.reduce((a, b) => {
       return  a + b;
     }, 0);
+    this.toShow = false;
     this.acNum = accNo;
     this.getAppsDetail(accNo)
     return this.totalServicePay = ((st + pt) / 12).toFixed(1);

@@ -9,8 +9,8 @@
         <h3 matLine>Services: <span class="mat-headline">$877</span> </h3>
       </mat-list-item>
       <ng-container *ngFor="let s of accServices">
-        <mat-list-item  (click)="openDialog()">
-          <mat-icon mat-list-icon>folder</mat-icon>
+        <mat-list-item  (click)="openDialog(s)"  class="mat-button">
+          <mat-icon mat-list-icon>backup</mat-icon>
           <h4 mat-line>{{s.name}}</h4>
           <p mat-line> $100</p>
         </mat-list-item>
@@ -21,11 +21,22 @@
           <h3 matLine>Applications: <span class="mat-headline">$877</span> </h3>
         </mat-list-item>
       <ng-container *ngFor="let p of accApps">
-        <mat-list-item (click)="openDialog()">
-          <h3 matLine>{{p.name}}<span class="mat-headline">$1024</span> </h3>
+        <mat-list-item (click)="openDialog(p)"  class="mat-button">
+          <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+          <h4 matLine>{{p.name}}<span class="mat-headline"> $1024</span> </h4>
         </mat-list-item>
       </ng-container>
-
+    </mat-list>
+    <mat-list>
+      <mat-list-item>
+        <h3 class="mat-subheader">Data Centers: <span class="mat-headline"></span> </h3>
+      </mat-list-item>
+      <ng-container *ngFor="let p of accServices">
+        <mat-list-item (click)="openDialog(p)" class="mat-button">
+          <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+          <h4 matLine>{{p.name}}<span class="mat-headline"> $1024</span> </h4>
+        </mat-list-item>
+      </ng-container>
     </mat-list>
   </div>
   <mat-card class="course-card mat-elevation-z10" >

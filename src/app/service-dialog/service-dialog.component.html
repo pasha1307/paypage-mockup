@@ -1,12 +1,13 @@
-<h2 mat-dialog-title>Service 1</h2>
+<h2 mat-dialog-title>{{data.sel.name}}</h2>
 
 <mat-dialog-content >
-content is here
-  <h2>{{data.id}}</h2>
-  <h2>{{data.title}}</h2>
-  <ul>
-    <li *ngFor="let x of data.sData[0]">{{x}}</li>
-  </ul>
+  <h4>Per Hour Cost: {{data.sel.cost}}</h4>
+  <h4>Total Hours: 14</h4>
+  <hr mat-line>
+  <div>
+      <app-bar-tpl [barChartData]="barsData"></app-bar-tpl>
+  </div>
+  <app-my-line-chart [lineChartData]="lineChartData"></app-my-line-chart>
 </mat-dialog-content>
 
 <mat-dialog-actions>

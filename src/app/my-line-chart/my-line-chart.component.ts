@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
@@ -9,7 +9,7 @@ import { Color, Label } from 'ng2-charts';
 })
 export class MyLineChartComponent implements OnInit {
 
-  public lineChartData: ChartDataSets[] = [
+ @Input() public lineChartData: ChartDataSets[] = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Account 1' },
     { data: [76, 92, 55, 63, 72, 60, 81], label: 'Account 2' },
     { data: [23, 44, 19, 30, 22, 40, 29], label: 'Account 3' },

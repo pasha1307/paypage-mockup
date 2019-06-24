@@ -39,13 +39,14 @@ export class SingleAccountComponent implements OnInit {
   }
 
   ngOnInit() {}
-  openDialog() {
+  openDialog(el) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.minWidth = '400px';
+    dialogConfig.minWidth = '700px';
     dialogConfig.minHeight = '500px';
     dialogConfig.data = {
+      sel: el,
       id: 1,
       title: 'Service No:..',
       sData: this.serviceData
