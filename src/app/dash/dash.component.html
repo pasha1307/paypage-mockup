@@ -12,9 +12,9 @@
         <mat-expansion-panel-header (click)="onAllShow()">
           ACCOUNTS
         </mat-expansion-panel-header>
-              <mat-nav-list *ngFor="let op of accounts">
-                <button (click)="onSumServ(op.id)" mat-button color="primary">{{op.name}}</button>
-              </mat-nav-list>
+        <mat-nav-list *ngFor="let op of accounts">
+          <button (click)="onSumServ(op.id)" mat-button color="primary">{{op.name}}</button>
+        </mat-nav-list>
         <mat-action-row>
           <button mat-button>Current Balance: {{granTotal | currency}}</button>
         </mat-action-row>
@@ -65,12 +65,12 @@
                 type="Column2d"
                 [dataSource]="dataSource">
               </fusioncharts>
-<!--              <app-doughnut-tpl [dataArr]="accountsArr" [labelArr]="accLabels"></app-doughnut-tpl>-->
+              <!--              <app-doughnut-tpl [dataArr]="accountsArr" [labelArr]="accLabels"></app-doughnut-tpl>-->
             </mat-card-content>
           </mat-card>
         </div>
       </section>
-      <section class="all-accounts" *ngIf="toShow">
+      <section class="all-accounts" >
         <div class="all-accounts-info" style="display: flex; flex-wrap: wrap">
           <mat-card class="monthly-card mat-elevation-z10" style="max-width: 550px">
             <mat-card-header>
@@ -90,73 +90,13 @@
               <mat-card-title>Current vs. Previous vs. Next Month</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <app-bar-tpl [barChartData]="barsData"></app-bar-tpl>
+              <app-bar-tpl [barChartData]="[{data: [12, 30, 22], label: 'some'}]"></app-bar-tpl>
             </mat-card-content>
           </mat-card>
         </div>
 
       </section>
-
-<!--      <router-outlet></router-outlet>-->
-
-      <section class="single-account" *ngIf="!toShow">
-        <hr mat-line>
-<!--        <h2>Single Acc Num: {{acNum}} - {{totalServicePay | currency}}</h2>-->
-        <app-single-account
-          [accountName]="acNum"
-          [totalAccount]="totalServicePay"
-          [serviceData]="serviceData"
-          [serviceLabels]="serviceLabels"
-          [applData]="applData"
-          [applLabels]="applLabels"
-          [locationData]="locationData"
-          [locationLabels]="locationLabels"
-          [accApps]="alP"
-          [accServices]="alS"
-        ></app-single-account>
-      </section>
       <hr mat-line>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<!--      <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>-->
-<!--      <section class="top">-->
-<!--        <div class="top-div">-->
-<!--          <label>Current months-to-date balance for June 1</label>-->
-<!--          <div>Bar Chart Graph goes here</div>-->
-
-<!--        </div>-->
-<!--        <div class="top-div">-->
-<!--          <div class="bill-details-panel">-->
-<!--            <p>Month-to-Date Spend By Service</p>-->
-<!--            <button class="mat-button">Bill Details</button>-->
-<!--          </div>-->
-<!--          <div class="doughnut-chart">-->
-<!--            Doughnut Chart is here-->
-<!--          </div>-->
-
-<!--        </div>-->
-<!--      </section>-->
-<!--      <section>-->
-<!--        <div class="bottom-div">-->
-<!--          <label>Break Down By Region * Day</label>-->
-<!--          <div class="stack-chart">-->
-<!--            Comparative Stack-type chart goes here-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </section>-->
-<!--      <mat-card class="course-card mat-elevation-z10" style="width: 450px;margin: auto">-->
-<!--        <mat-card-header>-->
-<!--          <mat-card-title>Graph Title</mat-card-title>-->
-<!--        </mat-card-header>-->
-<!--        <mat-card-content>-->
-<!--          <app-my-line-chart></app-my-line-chart>-->
-<!--        </mat-card-content>-->
-<!--        <mat-card-actions class="course-actions">-->
-<!--          <button mat-button class="mat-raised-button mat-accent">-->
-<!--            some action-->
-<!--          </button>-->
-<!--        </mat-card-actions>-->
-<!--      </mat-card>-->
-<!--      <ng-content></ng-content>-->

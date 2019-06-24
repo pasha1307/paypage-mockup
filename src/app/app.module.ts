@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FusionChartsModule } from 'angular-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,10 +21,10 @@ import {MatProgressSpinnerModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { PaymentsComponent } from './payments/payments.component';
-import { FusionChartsModule } from 'angular-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
+// import { FusionChartsModule } from 'angular-fusioncharts';
+// import FusionCharts from 'fusioncharts/core';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
-import Column2D from 'fusioncharts/viz/column2d';
+// import Column2D from 'fusioncharts/viz/column2d';
 import {ChartsModule} from 'ng2-charts';
 import { MyLineChartComponent } from './my-line-chart/my-line-chart.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
@@ -31,8 +33,9 @@ import { DoughnutTplComponent } from './doughnut-tpl/doughnut-tpl.component';
 import { BarTplComponent } from './bar-tpl/bar-tpl.component';
 import { SingleAccountComponent } from './single-account/single-account.component';
 import { ServiceDialogComponent } from './service-dialog/service-dialog.component';
+import { DashComponent } from './dash/dash.component';
 
-FusionChartsModule.fcRoot(FusionCharts);
+FusionChartsModule.fcRoot(FusionCharts, Column2D);
 
 @NgModule({
   declarations: [
@@ -45,7 +48,8 @@ FusionChartsModule.fcRoot(FusionCharts);
     DoughnutTplComponent,
     BarTplComponent,
     SingleAccountComponent,
-    ServiceDialogComponent
+    ServiceDialogComponent,
+    DashComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,8 @@ FusionChartsModule.fcRoot(FusionCharts);
     MatFormFieldModule,
     MatNativeDateModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    FusionChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
