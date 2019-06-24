@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import {Color, Label} from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
@@ -21,7 +21,7 @@ export class BarTplComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = ['Previous', 'This Month', 'Estimated'];
+  @Input() public barChartLabels: Label[] = ['Previous', 'This Month', 'Estimated'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
@@ -30,11 +30,7 @@ export class BarTplComponent implements OnInit {
       backgroundColor: 'orange',
     },
   ];
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80], label: 'Account 1' },
-    { data: [28, 48, 40], label: 'Account 2' },
-    { data: [28, 48, 40], label: 'Account 3' }
-  ];
+  @Input() public barChartData: ChartDataSets[] = [];
 
   constructor() { }
 

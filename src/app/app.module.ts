@@ -30,6 +30,7 @@ import { MyDoughChartComponent } from './my-dough-chart/my-dough-chart.component
 import { DoughnutTplComponent } from './doughnut-tpl/doughnut-tpl.component';
 import { BarTplComponent } from './bar-tpl/bar-tpl.component';
 import { SingleAccountComponent } from './single-account/single-account.component';
+import { ServiceDialogComponent } from './service-dialog/service-dialog.component';
 
 FusionChartsModule.fcRoot(FusionCharts);
 
@@ -43,7 +44,8 @@ FusionChartsModule.fcRoot(FusionCharts);
     MyDoughChartComponent,
     DoughnutTplComponent,
     BarTplComponent,
-    SingleAccountComponent
+    SingleAccountComponent,
+    ServiceDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -74,8 +76,10 @@ FusionChartsModule.fcRoot(FusionCharts);
     MatFormFieldModule,
     MatNativeDateModule,
     MatExpansionModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ServiceDialogComponent]
 })
 export class AppModule { }

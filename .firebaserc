@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-pay-stat": {
+      "hosting": {
+        "newPortal": [
+          "angular-pay-stat"
+        ]
+      }
+    }
+  }
+}

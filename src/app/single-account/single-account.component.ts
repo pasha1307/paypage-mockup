@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {ServiceDialogComponent} from '../service-dialog/service-dialog.component';
 
 @Component({
   selector: 'app-single-account',
@@ -8,19 +10,47 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./single-account.component.scss']
 })
 export class SingleAccountComponent implements OnInit {
-id;
-acc;
-total;
+  @Input() totalAccount;
+  @Input() accServices;
+  @Input() accApps;
+  id;
+  acc;
+  total;
+ @Input() serviceData: any[] = [
+    [],
+  ];
+ @Input() serviceLabels: any[] = [];
+  totalSum;
+ @Input() applData: any[] = [
+    [],
+  ];
+ @Input() applLabels: any[] = [];
+
+ @Input() locationData: any[] = [
+    [],
+  ];
+  @Input () locationLabels: any[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-  ) { }
+    private dialog: MatDialog
+  ) {
+  }
 
-  ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.acc = this.route.snapshot.paramMap.get('name');
-    this.total = this.route.snapshot.paramMap.get('total');
-    console.log('IS OP?', this.total)
+  ngOnInit() {}
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.minWidth = '400px';
+    dialogConfig.minHeight = '500px';
+    dialogConfig.data = {
+      id: 1,
+      title: 'Service No:..',
+      sData: this.serviceData
+    };
+    this.dialog.open(ServiceDialogComponent, dialogConfig);
   }
 
 }

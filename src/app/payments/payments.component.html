@@ -13,7 +13,7 @@
           ACCOUNTS
         </mat-expansion-panel-header>
               <mat-nav-list *ngFor="let op of accounts">
-                <a mat-list-item [routerLink]="['/payments', op.name, op]">{{op.name}}</a>
+                <a (click)="onSumServ(op.id)">{{op.name}}</a>
               </mat-nav-list>
         <mat-action-row>
           <button mat-button>Action Row Btn</button>
@@ -52,19 +52,18 @@
         <div class="total-accounts-block">
           <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>
           <div class="total-sum-wrap">
-            <p class="mat-headline">Total Balance For All Accounts </p>
-            <h1 class="mat-display-3">$2,300.00</h1>
+            <p class="mat-headline">Total Monthly Balance For All Accounts </p>
+            <h1 class="mat-display-3">{{granTotal | currency}}</h1>
           </div>
         </div>
         <div class="total-accounts-graph">
           <mat-card class="course-card mat-elevation-z3" style="width: 100%">
             <mat-card-content>
-              <app-my-dough-chart></app-my-dough-chart>
+              <app-doughnut-tpl [dataArr]="accountsArr" [labelArr]="accLabels"></app-doughnut-tpl>
             </mat-card-content>
           </mat-card>
         </div>
       </section>
-      <router-outlet></router-outlet>
       <section class="all-accounts" >
         <div class="all-accounts-info">
         </div>
@@ -86,82 +85,95 @@
             <mat-card-title>Current vs. Previous vs. Next Month</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <app-bar-tpl></app-bar-tpl>
+            <app-bar-tpl [barChartData]="barsData"></app-bar-tpl>
           </mat-card-content>
         </mat-card>
       </section>
 
+      <router-outlet></router-outlet>
       <hr mat-line>
-      <section class="single-account" >
-        <div class="total-sum-wrap">
-          <p class="mat-headline">Balance For the Account 1</p>
-          <h1 class="mat-display-2">$1,123.00</h1>
-        </div>
-        <div class="single-account-info-wrap">
-          <mat-list>
-            <mat-list-item>
-              <h3 matLine>Services: <span class="mat-headline">$877</span> </h3>
-            </mat-list-item>
-            <mat-list-item >
-              <mat-icon mat-list-icon>folder</mat-icon>
-              <h4 mat-line>Service One</h4>
-              <p mat-line> $100</p>
-            </mat-list-item>
-            <mat-list-item >
-              <mat-icon mat-list-icon>folder</mat-icon>
-              <h4 mat-line>Service Two</h4>
-              <p mat-line> $300</p>
-            </mat-list-item>
-            <mat-list-item >
-              <mat-icon mat-list-icon>folder</mat-icon>
-              <h4 mat-line>Service Three</h4>
-              <p mat-line> $600</p>
-            </mat-list-item>
-          </mat-list>
-          <mat-list>
-            <mat-list-item>
-              <h3 matLine>Applications: <span class="mat-headline">$1024</span> </h3>
-            </mat-list-item>
-            <mat-list-item >
-              <mat-icon mat-list-icon>folder</mat-icon>
-              <h4 mat-line>Application One</h4>
-              <p mat-line> $100</p>
-            </mat-list-item>
-            <mat-list-item >
-              <mat-icon mat-list-icon>folder</mat-icon>
-              <h4 mat-line>Application Two</h4>
-              <p mat-line> $300</p>
-            </mat-list-item>
-            <mat-list-item >
-              <mat-icon mat-list-icon>folder</mat-icon>
-              <h4 mat-line>Application Three</h4>
-              <p mat-line> $600</p>
-            </mat-list-item>
-            <mat-list-item >
-              <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
-              <h4 mat-line>Application Four</h4>
-              <p mat-line> $600</p>
-            </mat-list-item>
-          </mat-list>
-        </div>
-        <mat-card class="course-card mat-elevation-z10" >
-          <mat-card-header>
-            <mat-card-title>Shares By Service, Application, Data Center</mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="woo">
-            <div>
-              <app-doughnut-tpl [dataArr]="serviceData" [labelArr]="serviceLabels"></app-doughnut-tpl>
-            </div>
-            <div>
-              <app-doughnut-tpl [dataArr]="applData" [labelArr]="applLabels"></app-doughnut-tpl>
-            </div>
-            <div>
-              <app-doughnut-tpl [dataArr]="locationData" [labelArr]="locationLabels"></app-doughnut-tpl>
-            </div>
+      <h2>Single Acc Num: {{acNum}} - {{totalServicePay | currency}}</h2>
+      <app-single-account
+        [totalAccount]="totalServicePay"
+        [serviceData]="serviceData"
+        [serviceLabels]="serviceLabels"
+        [applData]="applData"
+        [applLabels]="applLabels"
+        [locationData]="locationData"
+        [locationLabels]="locationLabels"
+        [accApps]="alP"
+        [accServices]="alS"
+      ></app-single-account>
+<!--      <section class="single-account" >-->
+<!--        <div class="total-sum-wrap">-->
+<!--          <p class="mat-headline">Balance For the Account 1</p>-->
+<!--          <h1 class="mat-display-2">$1,123.00</h1>-->
+<!--        </div>-->
+<!--        <div class="single-account-info-wrap">-->
+<!--          <mat-list>-->
+<!--            <mat-list-item>-->
+<!--              <h3 matLine>Services: <span class="mat-headline">$877</span> </h3>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item >-->
+<!--              <mat-icon mat-list-icon>folder</mat-icon>-->
+<!--              <h4 mat-line>Service One</h4>-->
+<!--              <p mat-line> $100</p>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item >-->
+<!--              <mat-icon mat-list-icon>folder</mat-icon>-->
+<!--              <h4 mat-line>Service Two</h4>-->
+<!--              <p mat-line> $300</p>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item >-->
+<!--              <mat-icon mat-list-icon>folder</mat-icon>-->
+<!--              <h4 mat-line>Service Three</h4>-->
+<!--              <p mat-line> $600</p>-->
+<!--            </mat-list-item>-->
+<!--          </mat-list>-->
+<!--          <mat-list>-->
+<!--            <mat-list-item>-->
+<!--              <h3 matLine>Applications: <span class="mat-headline">$1024</span> </h3>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item >-->
+<!--              <mat-icon mat-list-icon>folder</mat-icon>-->
+<!--              <h4 mat-line>Application One</h4>-->
+<!--              <p mat-line> $100</p>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item >-->
+<!--              <mat-icon mat-list-icon>folder</mat-icon>-->
+<!--              <h4 mat-line>Application Two</h4>-->
+<!--              <p mat-line> $300</p>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item >-->
+<!--              <mat-icon mat-list-icon>folder</mat-icon>-->
+<!--              <h4 mat-line>Application Three</h4>-->
+<!--              <p mat-line> $600</p>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item >-->
+<!--              <mat-icon mat-list-icon>account_balance_wallet</mat-icon>-->
+<!--              <h4 mat-line>Application Four</h4>-->
+<!--              <p mat-line> $600</p>-->
+<!--            </mat-list-item>-->
+<!--          </mat-list>-->
+<!--        </div>-->
+<!--        <mat-card class="course-card mat-elevation-z10" >-->
+<!--          <mat-card-header>-->
+<!--            <mat-card-title>Shares By Service, Application, Data Center</mat-card-title>-->
+<!--          </mat-card-header>-->
+<!--          <mat-card-content class="woo">-->
+<!--            <div>-->
+<!--              <app-doughnut-tpl [dataArr]="serviceData" [labelArr]="serviceLabels"></app-doughnut-tpl>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <app-doughnut-tpl [dataArr]="applData" [labelArr]="applLabels"></app-doughnut-tpl>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <app-doughnut-tpl [dataArr]="locationData" [labelArr]="locationLabels"></app-doughnut-tpl>-->
+<!--            </div>-->
 
-          </mat-card-content>
-        </mat-card>
-      </section>
+<!--          </mat-card-content>-->
+<!--        </mat-card>-->
+<!--      </section>-->
       <hr mat-line>
       <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>
       <section class="top">

@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Service 1</h2>
+
+<mat-dialog-content >
+content is here
+  <h2>{{data.id}}</h2>
+  <h2>{{data.title}}</h2>
+  <ul>
+    <li *ngFor="let x of data.sData[0]">{{x}}</li>
+  </ul>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button"(click)="close()">Close</button>
+</mat-dialog-actions>
