@@ -52,7 +52,7 @@ export class FdoughComponent implements OnInit {
   @Input() height = 400;
   type = "doughnut2d";
   dataFormat = "json";
-  @Input() dataSource = {};
+  @Input() dataDough = {};
   constructor() { }
 
   ngOnInit() {

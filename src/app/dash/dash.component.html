@@ -62,17 +62,11 @@
         <div class="total-accounts-graph">
           <mat-card class="course-card mat-elevation-z3" style="width: 100%">
             <mat-card-content class="total-accounts-card-content">
-<!--              <app-fusionpie></app-fusionpie>-->
-              <app-fdough [dataSource]="dataSource" [width]="800"></app-fdough>
+              <app-fdough
+                [dataDough]="dataSource"
+              ></app-fdough>
               <app-bar-simple></app-bar-simple>
               <app-stack></app-stack>
-<!--              <fusioncharts-->
-<!--                width="700"-->
-<!--                height="400"-->
-<!--                type="Column2d"-->
-<!--                [dataSource]="dataSource">-->
-<!--              </fusioncharts>-->
-              <!--              <app-doughnut-tpl [dataArr]="accountsArr" [labelArr]="accLabels"></app-doughnut-tpl>-->
             </mat-card-content>
           </mat-card>
         </div>

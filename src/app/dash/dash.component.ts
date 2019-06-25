@@ -43,10 +43,30 @@ export class DashComponent implements OnInit {
   isHandset$: Observable<any>;
   selected;
   monthTotal = 900;
+  monthTotalLabel = '$900';
   accounts = new FormControl();
   dataSource;
-  doughData;
-  aList = ['One', 'Two', 'THree'];
+  dataDough;
+  serviceList = [{
+    label: 'Service A',
+    value: '1000'
+  },
+    {
+      label: 'Service B',
+      value: '5300'
+    },
+    {
+      label: 'C Service',
+      value: '10500'
+    },
+    {
+      label: 'D-Serv',
+      value: '18900'
+    },
+    {
+      label: 'Last Service',
+      value: '17904'
+    }];
   accountsTotals = [
     {name: 'Acc One', total: 200},
     {name: 'Account 2', total: 280},
@@ -60,52 +80,32 @@ export class DashComponent implements OnInit {
 // height;
 // dataFormat;
   constructor() {
-    this.dataSource = {
-      chart: {
-        caption: "Relative Cost of Service By Total",
-        subcaption: "For all users in 2017",
-        showpercentvalues: "1",
-        defaultcenterlabel: "Android Distribution",
-        aligncaptionwithcanvas: "0",
-        captionpadding: "0",
-        decimals: "1",
-        palette: "1",
-        plottooltext:
-          "<b>$percentValue</b> of our Android users are on <b>$label</b>",
-        centerlabel: "# Users: $value",
-        theme: "fusion",
-        plotHighlightEffect: 0,
-        use3DLighting: 0,
-        paletteColors: '#00447C,#0076CE, #EE6411,#6EA204,#B7295A,#F2AF00'
-      },
-      data: [
-        {
-          label: "Ice Cream Sandwich",
-          value: "1000"
-        },
-        {
-          label: "Jelly Bean",
-          value: "5300"
-        },
-        {
-          label: "Kitkat",
-          value: "10500"
-        },
-        {
-          label: "Lollipop",
-          value: "18900"
-        },
-        {
-          label: "Marshmallow",
-          value: "17904"
-        }
-      ]
-    };
   }
 
   ngOnInit() {
     this.selected = this.monthTotal;
+    this.dataSource = {
+      chart: {
+        caption: 'Relative Cost of Service By Total',
+        subcaption: 'For all users in 2017',
+        showpercentvalues: '1',
+        defaultcenterlabel: this.monthTotalLabel,
+        aligncaptionwithcanvas: '0',
+        captionpadding: '0',
+        decimals: '0',
+        palette: '1',
+        plottooltext:
+          '<b>$percentValue</b> of our Android users are on <b>$label</b>',
+        centerlabel: '$label - $$value',
+        theme: 'fusion',
+        plotHighlightEffect: 0,
+        use3DLighting: 0,
+        paletteColors: '#00447C,#0076CE, #EE6411,#6EA204,#B7295A,#F2AF00'
+      },
+      data: this.serviceList
+    };
   }
+
   getLabel(i) {
     this.optionLabel = this.accountsTotals[i].name;
   }
