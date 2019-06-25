@@ -3,44 +3,47 @@
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
     <div class="wrap-side">
-      <!--      <mat-nav-list>-->
-      <!--        <a mat-list-item routerLink="/payments">Link 1</a>-->
-      <!--        <a mat-list-item routerLink="/payments">Link 2</a>-->
-      <!--      </mat-nav-list>-->
+      <mat-form-field class="select-acc">
+        <mat-label>Select account</mat-label>
+        <mat-select [(value)]="selected" #sl>
+          <mat-option *ngFor="let acc of accountsTotals; let i = index" [value]="acc.total" (click)="getLabel(i)">{{acc.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-      <mat-expansion-panel style="margin-bottom: 40px;">
-        <mat-expansion-panel-header (click)="onAllShow()">
-          ACCOUNTS
-        </mat-expansion-panel-header>
-        <mat-nav-list *ngFor="let op of accounts">
-          <button (click)="onSumServ(op.id)" mat-button color="primary">{{op.name}}</button>
-        </mat-nav-list>
-        <mat-action-row>
-          <button mat-button>Current Balance: {{granTotal | currency}}</button>
-        </mat-action-row>
-      </mat-expansion-panel>
+      <mat-form-field class="sel-center">
+        <mat-label>By Data Center</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let acc of accountsTotals" [value]="acc.total">{{acc.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <div class="calendar-wrap">
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            name="workStartDate"
-            [matDatepicker]="picker"
-            placeholder="Start" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-label>Starts</mat-label>
-        </mat-form-field>
+        <fieldset>
+          <legend>By Time Period</legend>
+          <mat-form-field>
+            <input
+              #dr
+              matInput
+              name="workStartDate"
+              [matDatepicker]="picker"
+              placeholder="Start" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-label>Starts</mat-label>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            name="workEndDate"
-            [matDatepicker]="picker1"
-            placeholder="End">
-          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
-          <mat-label>Ends</mat-label>
-        </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              name="workEndDate"
+              [matDatepicker]="picker1"
+              placeholder="End">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-label>Ends</mat-label>
+          </mat-form-field>
+        </fieldset>
+
       </div>
     </div>
 
@@ -48,23 +51,27 @@
   </mat-sidenav>
   <mat-sidenav-content >
     <div class="app-container">
-      <section class="total-accounts">
-        <div class="total-accounts-block">
-          <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>
-          <div class="total-sum-wrap">
-            <p class="mat-headline">Current Monthly Balance For All Accounts </p>
-            <h1 class="mat-display-3">{{granTotal | currency}}</h1>
-          </div>
+      <div class="total-accounts-block">
+        <div class="total-sum-wrap">
+          <p class="mat-headline">Current Monthly Balance For {{optionLabel}}: </p>
+          <h1 class="mat-display-3">{{selected | currency}}</h1>
         </div>
+        <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>
+      </div>
+      <section class="total-accounts">
         <div class="total-accounts-graph">
           <mat-card class="course-card mat-elevation-z3" style="width: 100%">
-            <mat-card-content>
-              <fusioncharts
-                width="700"
-                height="400"
-                type="Column2d"
-                [dataSource]="dataSource">
-              </fusioncharts>
+            <mat-card-content class="total-accounts-card-content">
+<!--              <app-fusionpie></app-fusionpie>-->
+              <app-fdough [dataSource]="dataSource" [width]="800"></app-fdough>
+              <app-bar-simple></app-bar-simple>
+              <app-stack></app-stack>
+<!--              <fusioncharts-->
+<!--                width="700"-->
+<!--                height="400"-->
+<!--                type="Column2d"-->
+<!--                [dataSource]="dataSource">-->
+<!--              </fusioncharts>-->
               <!--              <app-doughnut-tpl [dataArr]="accountsArr" [labelArr]="accLabels"></app-doughnut-tpl>-->
             </mat-card-content>
           </mat-card>
@@ -77,11 +84,11 @@
               <mat-card-title>Comparative Cost of Accounts by Month</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <app-my-line-chart></app-my-line-chart>
+              contsnt here
             </mat-card-content>
           </mat-card>
           <mat-list class="all-accounts-list">
-            <mat-list-item *ngFor="let ac of accounts">
+            <mat-list-item *ngFor="let ac of accountsList">
               <h3 matLine>{{ac.name}}: <span class="mat-headline">${{ac.total}}</span> </h3>
             </mat-list-item>
           </mat-list>
@@ -90,7 +97,7 @@
               <mat-card-title>Current vs. Previous vs. Next Month</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <app-bar-tpl [barChartData]="[{data: [12, 30, 22], label: 'some'}]"></app-bar-tpl>
+             content here
             </mat-card-content>
           </mat-card>
         </div>

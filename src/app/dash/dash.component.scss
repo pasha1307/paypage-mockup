@@ -33,25 +33,22 @@
   padding: 15px;
   //background-color: rgba(0,0,0,.1);
 }
-.top {
-  background-color: yellow;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  > * {
-    flex: 1 1 auto;
-    max-width: 350px;
-    background-color: green;
+
+.total-accounts-block {
+  margin-top: 0;
+  text-align: center;
+  .total-sum-wrap {
+    display: block;
+    text-align: left;
+    max-width: 500px;
+    margin: auto;
+    //margin-left: 160px;
+    p {
+      margin-bottom: 7px;
+    }
   }
 }
-.total-sum-wrap {
-  display: block;
-  width: 400px;
-  margin: 20px auto 0 auto;
-  p {
-    margin-bottom: 7px;
-  }
-}
+
 .total-accounts {
   display: flex;
   width: 100%;
@@ -59,12 +56,9 @@
   > * {
     flex: 0 1 auto;
   }
-  .total-accounts-block {
-    max-width: 500px;
-  }
 }
 .total-accounts-graph {
-  max-width: 500px;
+  max-width: 700px;
 }
 .all-accounts {
   margin-top: 50px;
@@ -103,10 +97,42 @@ mat-card-content.woo {
   flex-direction: row;
   justify-content: center;
   > * {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     //max-width: 350px;
   }
   mat-list {
     max-width: 250px;
+  }
+}
+.select-acc {
+  margin-top: 30px;
+  max-width: 300px;
+}
+.sel-center {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  max-width: 300px;
+}
+.total-accounts-card-content {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  > * {
+    flex: 1 1 auto;
+    //max-width: 350px;
+  }
+}
+.calendar-wrap {
+  width: 100%;
+  fieldset {
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    width: 100%;
+    mat-form-field {
+      width: 100%;
+    }
   }
 }

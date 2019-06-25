@@ -21,10 +21,10 @@ import {MatProgressSpinnerModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { PaymentsComponent } from './payments/payments.component';
-// import { FusionChartsModule } from 'angular-fusioncharts';
-// import FusionCharts from 'fusioncharts/core';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
-// import Column2D from 'fusioncharts/viz/column2d';
+import Pie2d from 'fusioncharts/viz/pie2d';
+import Doughnut2d from 'fusioncharts/viz/doughnut2d';
+import StackedColumn2d from 'fusioncharts/viz/stackedColumn2d';
 import {ChartsModule} from 'ng2-charts';
 import { MyLineChartComponent } from './my-line-chart/my-line-chart.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
@@ -34,8 +34,12 @@ import { BarTplComponent } from './bar-tpl/bar-tpl.component';
 import { SingleAccountComponent } from './single-account/single-account.component';
 import { ServiceDialogComponent } from './service-dialog/service-dialog.component';
 import { DashComponent } from './dash/dash.component';
+import { FusionpieComponent } from './fusionpie/fusionpie.component';
+import { FdoughComponent } from './Fusion/fdough/fdough.component';
+import { BarSimpleComponent } from './Fusion/bar-simple/bar-simple.component';
+import { StackComponent } from './Fusion/stack/stack.component';
 
-FusionChartsModule.fcRoot(FusionCharts, Column2D);
+FusionChartsModule.fcRoot(FusionCharts, Column2D, Pie2d, Doughnut2d, StackedColumn2d);
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D);
     BarTplComponent,
     SingleAccountComponent,
     ServiceDialogComponent,
-    DashComponent
+    DashComponent,
+    FusionpieComponent,
+    FdoughComponent,
+    BarSimpleComponent,
+    StackComponent
   ],
   imports: [
     BrowserModule,
