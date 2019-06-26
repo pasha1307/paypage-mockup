@@ -38,8 +38,9 @@ import { FusionpieComponent } from './fusionpie/fusionpie.component';
 import { FdoughComponent } from './Fusion/fdough/fdough.component';
 import { BarSimpleComponent } from './Fusion/bar-simple/bar-simple.component';
 import { StackComponent } from './Fusion/stack/stack.component';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
 
-FusionChartsModule.fcRoot(FusionCharts, Column2D, Pie2d, Doughnut2d, StackedColumn2d);
+FusionChartsModule.fcRoot(FusionCharts, Column2D, Pie2d, Doughnut2d, StackedColumn2d, Charts, FusionTheme);
 
 @NgModule({
   declarations: [

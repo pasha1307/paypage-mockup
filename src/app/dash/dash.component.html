@@ -65,8 +65,21 @@
               <app-fdough
                 [dataDough]="dataSource"
               ></app-fdough>
-              <app-bar-simple></app-bar-simple>
-              <app-stack></app-stack>
+              <fusioncharts
+                width="400"
+                height="400"
+                type="Column2d"
+                [dataSource]="barData"
+              >
+              </fusioncharts>
+
+              <fusioncharts
+                width="700"
+                height="400"
+                type="stackedcolumn2d"
+                [dataSource]="stackData"
+              >
+              </fusioncharts>
             </mat-card-content>
           </mat-card>
         </div>
@@ -82,7 +95,7 @@
             </mat-card-content>
           </mat-card>
           <mat-list class="all-accounts-list">
-            <mat-list-item *ngFor="let ac of accountsList">
+            <mat-list-item *ngFor="let ac of accountsTotals">
               <h3 matLine>{{ac.name}}: <span class="mat-headline">${{ac.total}}</span> </h3>
             </mat-list-item>
           </mat-list>

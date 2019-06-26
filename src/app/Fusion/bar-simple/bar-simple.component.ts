@@ -9,7 +9,7 @@ const data = {
     theme: "fusion"
   },
   data: [
-    {
+   [ {
       label: "Venezuela",
       value: "290"
     },
@@ -24,15 +24,15 @@ const data = {
     {
       label: "Iran",
       value: "140"
-    },
-    {
+    },],
+   [ {
       label: "Russia",
       value: "115"
     },
     {
       label: "UAE",
       value: "100"
-    },
+    },],
     {
       label: "US",
       value: "30"

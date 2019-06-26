@@ -1,36 +1,16 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
-import {FormControl} from '@angular/forms';
 
-// const data = {
-//   chart: {
-//     caption: 'Market Share of Web Servers',
-//     plottooltext: '<b>$percentValue</b> of web servers run on $label servers',
-//     showlegend: '1',
-//     showpercentvalues: '1',
-//     legendposition: 'bottom',
-//     usedataplotcolorforlabels: '1',
-//     theme: 'fusion'
-//   },
-//   data: [
-//     {
-//       label: 'Apache',
-//       value: '32647479'
-//     },
-//     {
-//       label: 'Microsoft',
-//       value: '22100932'
-//     },
-//     {
-//       label: 'Zeus',
-//       value: '14376'
-//     },
-//     {
-//       label: 'Other',
-//       value: '18674221'
-//     }
-//   ]
-// };
+import {
+  accOneServices,
+  accThreeServices,
+  accTwoServices,
+  acOneBarData, acThreeBarData, acTwoBarData,
+  allAccounts,
+  allAccServicees,
+  AllBarData
+} from '../data-mock';
+import {stackCategories, stackDataAcc1, stackDataAcc2, stackDataAcc3, stackDataAll} from '../data-stack-mocks';
 
 
 @Component({
@@ -39,47 +19,54 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./dash.component.scss']
 })
 export class DashComponent implements OnInit {
+  No = 0;
   optionLabel = 'All Accounts';
   isHandset$: Observable<any>;
   selected;
-  monthTotal = 900;
-  monthTotalLabel = '$900';
-  accounts = new FormControl();
+  monthTotal = 11750;
+  monthTotalLabel = '$11750';
   dataSource;
-  dataDough;
-  serviceList = [{
-    label: 'Service A',
-    value: '1000'
-  },
-    {
-      label: 'Service B',
-      value: '5300'
-    },
-    {
-      label: 'C Service',
-      value: '10500'
-    },
-    {
-      label: 'D-Serv',
-      value: '18900'
-    },
-    {
-      label: 'Last Service',
-      value: '17904'
-    }];
-  accountsTotals = [
-    {name: 'Acc One', total: 200},
-    {name: 'Account 2', total: 280},
-    {name: 'Account 3', total: 420},
-    {name: 'All Accounts', total: 900}
-  ];
-  pieData;
-// pieConfig;
-// type;
-// width;
-// height;
-// dataFormat;
+  accountsTotals = allAccounts;
+  initAllAccServices = allAccServicees;
+  allServiceList = [accOneServices, accTwoServices, accThreeServices, allAccServicees];
+  barData;
+  barAvg = [acOneBarData, acTwoBarData, acThreeBarData, AllBarData];
+  stackData;
+  stackDataArr = [stackDataAcc1, stackDataAcc2, stackDataAcc3, stackDataAll];
+
   constructor() {
+    this.barData = {
+      chart: {
+        caption: 'Current Month vs Previous vs Next',
+        subCaption: '',
+        xAxisName: 'month',
+        yAxisName: '$ amount',
+        numberSuffix: '',
+        theme: 'fusion',
+        paletteColors: '#00447C,#0076CE, #EE6411,#6EA204,#B7295A,#F2AF00'
+      },
+      data: AllBarData
+    };
+    this.stackData = {
+      chart: {
+        caption: 'Monthly Cost',
+        subcaption: ' by service',
+        numbersuffix: '',
+        showsum: '1',
+        plottooltext:
+          '$label <b>$dataValue</b> a month $seriesName',
+        theme: 'fusion',
+        drawcrossline: '1',
+        // borderColor: '#6EA204',
+        // plotGradientColor: '#B7295A',
+        // canvasBgColor: '#00447C',
+        // usePlotGradientColor: 0,
+        // showcanvasborder: 0,
+        paletteColors: '#00447C,#0076CE, #EE6411,#41B6E6,#B7295A,#F2AF00'
+      },
+      categories: stackCategories,
+      dataset: stackDataAll
+    };
   }
 
   ngOnInit() {
@@ -87,7 +74,7 @@ export class DashComponent implements OnInit {
     this.dataSource = {
       chart: {
         caption: 'Relative Cost of Service By Total',
-        subcaption: 'For all users in 2017',
+        subcaption: 'for an account',
         showpercentvalues: '1',
         defaultcenterlabel: this.monthTotalLabel,
         aligncaptionwithcanvas: '0',
@@ -95,19 +82,22 @@ export class DashComponent implements OnInit {
         decimals: '0',
         palette: '1',
         plottooltext:
-          '<b>$percentValue</b> of our Android users are on <b>$label</b>',
+          '<b>$percentValue</b> of services <b>$label</b>',
         centerlabel: '$label - $$value',
         theme: 'fusion',
         plotHighlightEffect: 0,
         use3DLighting: 0,
         paletteColors: '#00447C,#0076CE, #EE6411,#6EA204,#B7295A,#F2AF00'
       },
-      data: this.serviceList
+      data: this.initAllAccServices
     };
   }
 
   getLabel(i) {
-    this.optionLabel = this.accountsTotals[i].name;
+    this.No = i;
+    this.optionLabel = this.accountsTotals[this.No].name;
+    this.dataSource.data = this.allServiceList[i];
+    this.barData.data = this.barAvg[i];
+    this.stackData.dataset = this.stackDataArr[i];
   }
-
 }
