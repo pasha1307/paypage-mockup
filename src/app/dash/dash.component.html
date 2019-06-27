@@ -51,6 +51,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content >
+    <router-outlet></router-outlet>
     <div class="app-container" style="text-align: center">
 <!--      <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>-->
       <mat-card class="total-accounts-block">
@@ -74,7 +75,7 @@
         </div>
         <mat-nav-list class="all-accounts-list">
           <mat-list-item *ngFor="let ac of initAllAccServices" style="text-align: right">
-            <h3 matLine>{{ac.label}}: <span class="mat-headline"> ${{ac.value}}</span> </h3>
+            <h3 matLine [routerLink]="['/dash', ac.label]">{{ac.label}}: <span class="mat-headline"> ${{ac.value}}</span> </h3>
           </mat-list-item>
         </mat-nav-list>
       </mat-card>

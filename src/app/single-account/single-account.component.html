@@ -1,59 +1,38 @@
-<section class="single-account" >
-  <div class="total-sum-wrap">
-    <p class="mat-headline">Balance for Account{{accountName}}</p>
-    <h1 class="mat-display-2">{{totalAccount | currency}}</h1>
-  </div>
-  <div class="single-account-info-wrap">
-    <mat-list>
-      <mat-list-item>
-        <h3 matLine>Services: <span class="mat-headline">$877</span> </h3>
-      </mat-list-item>
-      <ng-container *ngFor="let s of accServices">
-        <mat-list-item  (click)="openDialog(s)"  class="mat-button">
-          <mat-icon mat-list-icon>backup</mat-icon>
-          <h4 mat-line>{{s.name}}</h4>
-          <p mat-line> $100</p>
-        </mat-list-item>
-      </ng-container>
-    </mat-list>
-    <mat-list>
-        <mat-list-item>
-          <h3 matLine>Applications: <span class="mat-headline">$877</span> </h3>
-        </mat-list-item>
-      <ng-container *ngFor="let p of accApps">
-        <mat-list-item (click)="openDialog(p)"  class="mat-button">
-          <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
-          <h4 matLine>{{p.name}}<span class="mat-headline"> $1024</span> </h4>
-        </mat-list-item>
-      </ng-container>
-    </mat-list>
-    <mat-list>
-      <mat-list-item>
-        <h3 class="mat-subheader">Data Centers: <span class="mat-headline"></span> </h3>
-      </mat-list-item>
-      <ng-container *ngFor="let p of accServices">
-        <mat-list-item (click)="openDialog(p)" class="mat-button">
-          <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
-          <h4 matLine>{{p.name}}<span class="mat-headline"> $1024</span> </h4>
-        </mat-list-item>
-      </ng-container>
-    </mat-list>
-  </div>
-  <mat-card class="course-card mat-elevation-z10" >
-    <mat-card-header>
-      <mat-card-title>Shares By Service, Application, Data Center</mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="woo">
-      <div>
-        <app-doughnut-tpl [dataArr]="serviceData" [labelArr]="serviceLabels"></app-doughnut-tpl>
-      </div>
-      <div>
-        <app-doughnut-tpl [dataArr]="applData" [labelArr]="applLabels"></app-doughnut-tpl>
-      </div>
-      <div>
-        <app-doughnut-tpl [dataArr]="locationData" [labelArr]="locationLabels"></app-doughnut-tpl>
-      </div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    </mat-card-content>
-  </mat-card>
-</section>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="about">
+    <th mat-header-cell *matHeaderCellDef> Brief </th>
+    <td mat-cell *matCellDef="let element"> {{element.about}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dc1">
+    <th mat-header-cell *matHeaderCellDef> DC-1 </th>
+    <td mat-cell *matCellDef="let element"> {{element.dc1}} </td>
+  </ng-container>
+  <ng-container matColumnDef="dc2">
+    <th mat-header-cell *matHeaderCellDef> DC-2 </th>
+    <td mat-cell *matCellDef="let element"> {{element.dc2}} </td>
+  </ng-container>
+  <ng-container matColumnDef="dc3">
+    <th mat-hea
+        der-cell *matHeaderCellDef> DC-3 </th>
+    <td mat-cell *matCellDef="let element"> {{element.dc3}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef> Total </th>
+    <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

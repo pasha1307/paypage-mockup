@@ -17,7 +17,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'payments/:id',
+    path: 'dash/:id',
     component: SingleAccountComponent
 
 },
