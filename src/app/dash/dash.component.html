@@ -46,36 +46,44 @@
 
       </div>
     </div>
-
-
   </mat-sidenav>
+
   <mat-sidenav-content >
-    <div class="app-container">
+    <div class="app-container" style="text-align: center">
+<!--      <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>-->
       <div class="total-accounts-block">
         <div class="total-sum-wrap">
           <p class="mat-headline">Current Monthly Balance For {{optionLabel}}: </p>
           <h1 class="mat-display-3">{{selected | currency}}</h1>
+<!--          <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>-->
+          <fusioncharts
+            width="500"
+            height="335"
+            type="Column2d"
+            [dataSource]="barData"
+          >
+          </fusioncharts>
         </div>
-        <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>
+        <div class="graph-right">
+              <app-fdough
+                width="600"
+                [dataDough]="dataSource"
+              ></app-fdough>
+        </div>
       </div>
+      <mat-divider></mat-divider>
       <section class="total-accounts">
+        <mat-nav-list class="all-accounts-list">
+            <mat-list-item *ngFor="let ac of initAllAccServices" style="text-align: right">
+            <h3 matLine>{{ac.label}}: <span class="mat-headline"> ${{ac.value}}</span> </h3>
+            </mat-list-item>
+        </mat-nav-list>
         <div class="total-accounts-graph">
           <mat-card class="course-card mat-elevation-z3" style="width: 100%">
             <mat-card-content class="total-accounts-card-content">
-              <app-fdough
-                [dataDough]="dataSource"
-              ></app-fdough>
               <fusioncharts
-                width="400"
-                height="400"
-                type="Column2d"
-                [dataSource]="barData"
-              >
-              </fusioncharts>
-
-              <fusioncharts
-                width="700"
-                height="400"
+                width="800"
+                height="500"
                 type="stackedcolumn2d"
                 [dataSource]="stackData"
               >
@@ -84,33 +92,6 @@
           </mat-card>
         </div>
       </section>
-      <section class="all-accounts" >
-        <div class="all-accounts-info" style="display: flex; flex-wrap: wrap">
-          <mat-card class="monthly-card mat-elevation-z10" style="max-width: 550px">
-            <mat-card-header>
-              <mat-card-title>Comparative Cost of Accounts by Month</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              contsnt here
-            </mat-card-content>
-          </mat-card>
-          <mat-list class="all-accounts-list">
-            <mat-list-item *ngFor="let ac of accountsTotals">
-              <h3 matLine>{{ac.name}}: <span class="mat-headline">${{ac.total}}</span> </h3>
-            </mat-list-item>
-          </mat-list>
-          <mat-card class="curr-card mat-elevation-z10" style="max-width: 550px">
-            <mat-card-header>
-              <mat-card-title>Current vs. Previous vs. Next Month</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-             content here
-            </mat-card-content>
-          </mat-card>
-        </div>
-
-      </section>
-      <hr mat-line>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

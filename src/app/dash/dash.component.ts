@@ -95,6 +95,7 @@ export class DashComponent implements OnInit {
 
   getLabel(i) {
     this.No = i;
+    this.initAllAccServices = this.allServiceList[i];
     this.optionLabel = this.accountsTotals[this.No].name;
     this.dataSource.data = this.allServiceList[i];
     this.barData.data = this.barAvg[i];

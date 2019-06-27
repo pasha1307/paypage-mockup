@@ -48,8 +48,8 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./fdough.component.scss']
 })
 export class FdoughComponent implements OnInit {
-  @Input() width = 600;
-  @Input() height = 400;
+  @Input() width = 700;
+  @Input() height = 500;
   type = "doughnut2d";
   dataFormat = "json";
   @Input() dataDough = {};
