@@ -18,7 +18,7 @@ import {
 } from '@angular/material';
 import {MatPaginatorModule} from '@angular/material/';
 import {MatProgressSpinnerModule} from '@angular/material';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { PaymentsComponent } from './payments/payments.component';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
@@ -39,6 +39,7 @@ import { FdoughComponent } from './Fusion/fdough/fdough.component';
 import { BarSimpleComponent } from './Fusion/bar-simple/bar-simple.component';
 import { StackComponent } from './Fusion/stack/stack.component';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
+import {NgxDaterangepickerMd} from 'ngx-daterangepicker-material';
 
 FusionChartsModule.fcRoot(FusionCharts, Column2D, Pie2d, Doughnut2d, StackedColumn2d, Charts, FusionTheme);
 
@@ -82,6 +83,7 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, Pie2d, Doughnut2d, StackedColu
     AppRoutingModule,
     MatSelectModule,
     MatDatepickerModule,
+    FormsModule,
     ReactiveFormsModule,
     FusionChartsModule,
     HttpClientModule,
@@ -90,7 +92,8 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, Pie2d, Doughnut2d, StackedColu
     MatNativeDateModule,
     MatExpansionModule,
     MatDialogModule,
-    FusionChartsModule
+    FusionChartsModule,
+    NgxDaterangepickerMd.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

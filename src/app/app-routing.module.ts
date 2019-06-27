@@ -21,7 +21,7 @@ const routes: Routes = [
     component: SingleAccountComponent
 
 },
-  { path: '',   redirectTo: '/payments', pathMatch: 'full' },
+  { path: '',   redirectTo: '/dash', pathMatch: 'full' },
   {
     path: '**',
     redirectTo: '/'

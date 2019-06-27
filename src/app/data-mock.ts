@@ -6,92 +6,92 @@ export const allAccounts = [
 
 export const accOneServices = [
   {
-    label: 'Service A',
+    label: 'Product One',
     value: '400'
   },
   {
-    label: 'Service B',
+    label: 'Product Two',
     value: '1300'
   },
   {
-    label: 'C Service',
+    label: 'Product Three',
     value: '500'
   },
   {
-    label: 'D-Serv',
+    label: 'Product-4',
     value: '1900'
   },
   {
-    label: 'Last Service',
+    label: 'Product VIP',
     value: '950'
   }
 ];
 
 export const accTwoServices = [
   {
-    label: 'Service A',
+    label: 'Product One',
     value: '800'
   },
   {
-    label: 'Service B',
+    label: 'Product Two',
     value: '300'
   },
   {
-    label: 'C Service',
+    label: 'Product Three',
     value: '800'
   },
   {
-    label: 'D-Serv',
+    label: 'Product-4',
     value: '200'
   },
   {
-    label: 'Last Service',
+    label: 'Product VIP',
     value: '700'
   }
 ];
 
 export const accThreeServices = [
   {
-    label: 'Service A',
+    label: 'Product One',
     value: '920'
   },
   {
-    label: 'Service B',
+    label: 'Product Two',
     value: '580'
   },
   {
-    label: 'C Service',
+    label: 'Product Three',
     value: '600'
   },
   {
-    label: 'D-Serv',
+    label: 'Product-4',
     value: '300'
   },
   {
-    label: 'Last Service',
+    label: 'Product VIP',
     value: '700'
   }
 ];
 
 export const allAccServicees = [
   {
-    label: 'Service A',
+    label: 'Product One',
     value: '1000'
   },
   {
-    label: 'Service B',
+    label: 'Product Two',
     value: '5300'
   },
   {
-    label: 'C Service',
+    label: 'Product Three',
     value: '10500'
   },
   {
-    label: 'D-Serv',
+    label: 'Product-4',
     value: '18900'
   },
   {
-    label: 'Last Service',
+    label: 'Product VIP',
     value: '17904'
   }
 ];
@@ -154,23 +154,23 @@ export const acThreeBarData = [
   }
 ];
 // {
-//   label: 'Service A',
+//   label: 'Product One',
 //     value: '1000'
 // },
 // {
-//   label: 'Service B',
+//   label: 'Product Two',
 //     value: '5300'
 // },
 // {
-//   label: 'C Service',
+//   label: 'Product Three',
 //     value: '10500'
 // },
 // {
-//   label: 'D-Serv',
+//   label: 'Product-4',
 //     value: '18900'
 // },
 // {
-//   label: 'Last Service',
+//   label: 'Product VIP',
 //     value: '17904'
 // }
 // ];

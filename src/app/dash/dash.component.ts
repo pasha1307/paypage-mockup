@@ -11,6 +11,8 @@ import {
   AllBarData
 } from '../data-mock';
 import {stackCategories, stackDataAcc1, stackDataAcc2, stackDataAcc3, stackDataAll} from '../data-stack-mocks';
+import {Moment} from 'moment';
+import {allDataCenters} from '../data-mock-centers';
 
 
 @Component({
@@ -19,6 +21,8 @@ import {stackCategories, stackDataAcc1, stackDataAcc2, stackDataAcc3, stackDataA
   styleUrls: ['./dash.component.scss']
 })
 export class DashComponent implements OnInit {
+  sel: {startDate: Moment, endDate: Moment};
+  dWidth;
   No = 0;
   optionLabel = 'All Accounts';
   isHandset$: Observable<any>;
@@ -26,6 +30,7 @@ export class DashComponent implements OnInit {
   monthTotal = 11750;
   monthTotalLabel = '$11750';
   dataSource;
+  dataCenters = allDataCenters;
   accountsTotals = allAccounts;
   initAllAccServices = allAccServicees;
   allServiceList = [accOneServices, accTwoServices, accThreeServices, allAccServicees];
@@ -70,10 +75,11 @@ export class DashComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dWidth = '100%';
     this.selected = this.monthTotal;
     this.dataSource = {
       chart: {
-        caption: 'Relative Cost of Service By Total',
+        caption: 'Relative Cost of Product',
         subcaption: 'for an account',
         showpercentvalues: '1',
         defaultcenterlabel: this.monthTotalLabel,
@@ -93,10 +99,18 @@ export class DashComponent implements OnInit {
     };
   }
 
-  getLabel(i) {
+  onAccountSelect(i) {
     this.No = i;
     this.initAllAccServices = this.allServiceList[i];
     this.optionLabel = this.accountsTotals[this.No].name;
+    this.dataSource.data = this.allServiceList[i];
+    this.barData.data = this.barAvg[i];
+    this.stackData.dataset = this.stackDataArr[i];
+  }
+  onDataCenterSelect(i) {
+    this.No = i;
+    this.initAllAccServices = this.allServiceList[i];
+    this.optionLabel = this.dataCenters[this.No].name;
     this.dataSource.data = this.allServiceList[i];
     this.barData.data = this.barAvg[i];
     this.stackData.dataset = this.stackDataArr[i];

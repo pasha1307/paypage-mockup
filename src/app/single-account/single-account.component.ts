@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ServiceDialogComponent} from '../service-dialog/service-dialog.component';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-single-account',
@@ -37,9 +38,15 @@ export class SingleAccountComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog
   ) {
+    const id: Observable<string> = route.params.pipe(map(p => p.id));
+    const url: Observable<string> = route.url.pipe(map(segments => segments.join('')));
+    // route.data includes both `data` and `resolve`
+    const user = route.data.pipe(map(d => d.user));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route
+  }
   openDialog(el) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
