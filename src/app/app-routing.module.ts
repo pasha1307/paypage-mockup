@@ -8,7 +8,20 @@ import {DashComponent} from './dash/dash.component';
 const routes: Routes = [
   {
     path: 'dash',
-    component: DashComponent
+    component: DashComponent,
+    data: {animation: 'list'},
+    children: [
+      // {
+      //   path: '',
+      //   component: DashComponent,
+      //   data: {animation: 'detail'}
+      // },
+      {
+        path: ':id/:label',
+        component: SingleAccountComponent,
+        data: {animation: 'detail'}
+      },
+    ]
 
   },
   {
@@ -16,11 +29,6 @@ const routes: Routes = [
     component: PaymentsComponent
 
   },
-  {
-    path: 'dash/:id',
-    component: SingleAccountComponent
-
-},
   { path: '',   redirectTo: '/dash', pathMatch: 'full' },
   {
     path: '**',

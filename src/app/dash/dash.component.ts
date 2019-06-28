@@ -13,15 +13,18 @@ import {
 import {stackCategories, stackDataAcc1, stackDataAcc2, stackDataAcc3, stackDataAll} from '../data-stack-mocks';
 import {Moment} from 'moment';
 import {allDataCenters} from '../data-mock-centers';
+import {Router} from '@angular/router';
+import {slideInAnimation} from '../animations';
 
 
 @Component({
   selector: 'app-dash',
   templateUrl: './dash.component.html',
-  styleUrls: ['./dash.component.scss']
+  styleUrls: ['./dash.component.scss'],
+  animations: [slideInAnimation]
 })
 export class DashComponent implements OnInit {
-  sel: {startDate: Moment, endDate: Moment};
+  sel: { startDate: Moment, endDate: Moment };
   dWidth;
   No = 0;
   optionLabel = 'All Accounts';
@@ -39,7 +42,7 @@ export class DashComponent implements OnInit {
   stackData;
   stackDataArr = [stackDataAcc1, stackDataAcc2, stackDataAcc3, stackDataAll];
 
-  constructor() {
+  constructor(private router: Router) {
     this.barData = {
       chart: {
         caption: 'Current Month vs Previous vs Next',
@@ -106,7 +109,9 @@ export class DashComponent implements OnInit {
     this.dataSource.data = this.allServiceList[i];
     this.barData.data = this.barAvg[i];
     this.stackData.dataset = this.stackDataArr[i];
+    this.router.navigate(['/dash']);
   }
+
   onDataCenterSelect(i) {
     this.No = i;
     this.initAllAccServices = this.allServiceList[i];
@@ -114,5 +119,6 @@ export class DashComponent implements OnInit {
     this.dataSource.data = this.allServiceList[i];
     this.barData.data = this.barAvg[i];
     this.stackData.dataset = this.stackDataArr[i];
+    this.router.navigate(['/dash']);
   }
 }

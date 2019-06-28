@@ -1,27 +1,32 @@
 export const allAccounts = [
-  {name: 'Acc One', total: 5050},
-  {name: 'Account 2', total: 2800},
-  {name: 'Account 3', total: 3000},
-  {name: 'All Accounts', total: 11750}];
+  {id: 1, name: 'Acc One', total: 5050},
+  {id: 2, name: 'Account 2', total: 2800},
+  {id: 3, name: 'Account 3', total: 3000},
+  {id: 4, name: 'All Accounts', total: 11750}];
 
 export const accOneServices = [
   {
+    id: 1,
     label: 'Product One',
     value: '400'
   },
   {
+    id: 2,
     label: 'Product Two',
     value: '1300'
   },
   {
+    id: 3,
     label: 'Product Three',
     value: '500'
   },
   {
+    id: 4,
     label: 'Product-4',
     value: '1900'
   },
   {
+    id: 5,
     label: 'Product VIP',
     value: '950'
   }
@@ -29,22 +34,27 @@ export const accOneServices = [
 
 export const accTwoServices = [
   {
+    id: 1,
     label: 'Product One',
     value: '800'
   },
   {
+    id: 2,
     label: 'Product Two',
     value: '300'
   },
   {
+    id: 3,
     label: 'Product Three',
     value: '800'
   },
   {
+    id: 4,
     label: 'Product-4',
     value: '200'
   },
   {
+    id: 5,
     label: 'Product VIP',
     value: '700'
   }
@@ -52,22 +62,27 @@ export const accTwoServices = [
 
 export const accThreeServices = [
   {
+    id: 1,
     label: 'Product One',
     value: '920'
   },
   {
+    id: 2,
     label: 'Product Two',
     value: '580'
   },
   {
+    id: 3,
     label: 'Product Three',
     value: '600'
   },
   {
+    id: 4,
     label: 'Product-4',
     value: '300'
   },
   {
+    id: 5,
     label: 'Product VIP',
     value: '700'
   }
@@ -75,22 +90,27 @@ export const accThreeServices = [
 
 export const allAccServicees = [
   {
+    id: 1,
     label: 'Product One',
     value: '1000'
   },
   {
+    id: 2,
     label: 'Product Two',
     value: '5300'
   },
   {
+    id: 3,
     label: 'Product Three',
     value: '10500'
   },
   {
+    id: 4,
     label: 'Product-4',
     value: '18900'
   },
   {
+    id: 5,
     label: 'Product VIP',
     value: '17904'
   }

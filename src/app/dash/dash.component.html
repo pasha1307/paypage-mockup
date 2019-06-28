@@ -16,43 +16,52 @@
           <mat-option *ngFor="let acc of dataCenters; let i = index" [value]="acc.total" (click)="onDataCenterSelect(i)">{{acc.name}}</mat-option>
         </mat-select>
       </mat-form-field>
-<!--      <ngx-daterangepicker-material (choosedDate)="choosedDate($event)">-->
-<!--      </ngx-daterangepicker-material>-->
-<!--      <input type="text" ngxDaterangepickerMd [(ngModel)]="sel" class="form-control"/>-->
-      <div class="calendar-wrap">
-        <fieldset>
-          <legend>By Time Range</legend>
-          <mat-form-field>
-            <input
-              #dr
-              matInput
-              name="workStartDate"
-              [matDatepicker]="picker"
-              placeholder="Start" >
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-label>Starts</mat-label>
-          </mat-form-field>
+      <mat-nav-list>
+        <h3 mat-subheader>Products</h3>
+        <mat-list-item *ngFor="let ac of initAllAccServices" [routerLink]="['/dash', ac.id, ac.label]">
+          <mat-icon mat-list-icon>note</mat-icon>
+          <h4 mat-line>{{ac.label}}</h4>
+          <p mat-line> {{ac.value | currency}} </p>
+        </mat-list-item>
+      </mat-nav-list>
+<!--      <div class="calendar-wrap">-->
+<!--        <fieldset>-->
+<!--          <legend>By Time Range</legend>-->
+<!--          <mat-form-field>-->
+<!--            <input-->
+<!--              #dr-->
+<!--              matInput-->
+<!--              name="workStartDate"-->
+<!--              [matDatepicker]="picker"-->
+<!--              placeholder="Start" >-->
+<!--            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--            <mat-datepicker #picker></mat-datepicker>-->
+<!--            <mat-label>Starts</mat-label>-->
+<!--          </mat-form-field>-->
 
-          <mat-form-field>
-            <input
-              matInput
-              name="workEndDate"
-              [matDatepicker]="picker1"
-              placeholder="End">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-            <mat-label>Ends</mat-label>
-          </mat-form-field>
-        </fieldset>
+<!--          <mat-form-field>-->
+<!--            <input-->
+<!--              matInput-->
+<!--              name="workEndDate"-->
+<!--              [matDatepicker]="picker1"-->
+<!--              placeholder="End">-->
+<!--            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>-->
+<!--            <mat-datepicker #picker1></mat-datepicker>-->
+<!--            <mat-label>Ends</mat-label>-->
+<!--          </mat-form-field>-->
+<!--        </fieldset>-->
 
-      </div>
+<!--      </div>-->
     </div>
   </mat-sidenav>
 
   <mat-sidenav-content >
-    <router-outlet></router-outlet>
-    <div class="app-container" style="text-align: center">
+<!--    <h1>{{o.isActivated}}</h1>-->
+    <main [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+      <router-outlet #o="outlet"></router-outlet>
+    </main>
+    <div class="app-container" style="text-align: center" *ngIf="!o.isActivated">
+
 <!--      <p mat-line>Welcome to the Payment console, your month-to-date, and month-end forecast cost appear below</p>-->
       <mat-card class="total-accounts-block">
         <div class="total-sum-wrap">
@@ -74,8 +83,8 @@
               ></app-fdough>
         </div>
         <mat-nav-list class="all-accounts-list">
-          <mat-list-item *ngFor="let ac of initAllAccServices" style="text-align: right">
-            <h3 matLine [routerLink]="['/dash', ac.label]">{{ac.label}}: <span class="mat-headline"> ${{ac.value}}</span> </h3>
+          <mat-list-item *ngFor="let ac of initAllAccServices; let it = index" style="text-align: right">
+            <h3 matLine [routerLink]="['/dash', ac.id, ac.label]">{{ac.label}}: <span class="mat-headline"> ${{ac.value}}</span> </h3>
           </mat-list-item>
         </mat-nav-list>
       </mat-card>
