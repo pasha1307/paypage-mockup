@@ -1,4 +1,17 @@
 <mat-sidenav-container class="sidenav-container">
+<<<<<<< HEAD
+  <mat-sidenav class="left-side" #drawer class="sidenav" fixedInViewport="true"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    <div>
+      <h2>SideNav here</h2>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="container-content">
+    <div class="app-container">
+      <h2>Conten + App COntainer</h2>
+=======
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
@@ -51,6 +64,7 @@
         [height]="height"
         [dataSource]="dataSource"
       ></fusioncharts>
+>>>>>>> 611f7d76f9c06876807747b28429219a2aed0ccc
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

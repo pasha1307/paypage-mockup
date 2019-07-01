@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+=======
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import * as FusionCharts from 'fusioncharts';
 import {data} from '../data-mock/data';
 import {schema} from '../data-mock/schema';
+>>>>>>> 611f7d76f9c06876807747b28429219a2aed0ccc
 
 @Component({
   selector: 'app-ipay',
@@ -10,6 +15,10 @@ import {schema} from '../data-mock/schema';
   styleUrls: ['./ipay.component.scss']
 })
 export class IpayComponent implements OnInit {
+<<<<<<< HEAD
+isHandset$: Observable<any>;
+  constructor() { }
+=======
   isHandset$: Observable<any>;
   baseData = data;
   dataSource: any;
@@ -32,13 +41,17 @@ export class IpayComponent implements OnInit {
     };
     this.fetchData();
   }
+>>>>>>> 611f7d76f9c06876807747b28429219a2aed0ccc
 
   ngOnInit() {
   }
 
+<<<<<<< HEAD
+=======
   fetchData() {
     const fusionTable = new FusionCharts.DataStore().createDataTable(data, schema);
     this.dataSource.data = fusionTable;
     // this.dataSource.data.then(res => console.log('RSP', res))
   }
+>>>>>>> 611f7d76f9c06876807747b28429219a2aed0ccc
 }

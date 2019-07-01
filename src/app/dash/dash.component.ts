@@ -10,11 +10,12 @@ import {
   allAccServicees,
   AllBarData
 } from '../data-mock';
-import {stackCategories, stackDataAcc1, stackDataAcc2, stackDataAcc3, stackDataAll} from '../data-stack-mocks';
+import {stackDataAcc1, stackDataAcc2, stackDataAcc3, stackDataAll} from '../data-stack-mocks';
 import {Moment} from 'moment';
 import {allDataCenters} from '../data-mock-centers';
 import {Router} from '@angular/router';
 import {slideInAnimation} from '../animations';
+import {stackDataAccount1, stackDataAccount2, stackDataAccount3, stackDataAccountAll, stackProdCategories} from '../mock-data/data-stack-products';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class DashComponent implements OnInit {
   barAvg = [acOneBarData, acTwoBarData, acThreeBarData, AllBarData];
   stackData;
   stackDataArr = [stackDataAcc1, stackDataAcc2, stackDataAcc3, stackDataAll];
+  stackDataProdArr = [stackDataAccount1, stackDataAccount2, stackDataAccount3, stackDataAccountAll];
 
   constructor(private router: Router) {
     this.barData = {
@@ -58,7 +60,7 @@ export class DashComponent implements OnInit {
     this.stackData = {
       chart: {
         caption: 'Monthly Cost',
-        subcaption: ' by service',
+        subcaption: ' by product and account',
         numbersuffix: '',
         showsum: '1',
         plottooltext:
@@ -72,7 +74,8 @@ export class DashComponent implements OnInit {
         // showcanvasborder: 0,
         paletteColors: '#00447C,#0076CE, #EE6411,#41B6E6,#B7295A,#F2AF00'
       },
-      categories: stackCategories,
+      // categories: stackCategories,
+      categories: stackProdCategories,
       dataset: stackDataAll
     };
   }
@@ -91,7 +94,7 @@ export class DashComponent implements OnInit {
         decimals: '0',
         palette: '1',
         plottooltext:
-          '<b>$percentValue</b> of services <b>$label</b>',
+          '<b>$percentValue</b> of product <b>$label</b>',
         centerlabel: '$label - $$value',
         theme: 'fusion',
         plotHighlightEffect: 0,
@@ -108,7 +111,7 @@ export class DashComponent implements OnInit {
     this.optionLabel = this.accountsTotals[this.No].name;
     this.dataSource.data = this.allServiceList[i];
     this.barData.data = this.barAvg[i];
-    this.stackData.dataset = this.stackDataArr[i];
+    this.stackData.dataset = this.stackDataProdArr[i];
     this.router.navigate(['/dash']);
   }
 
@@ -118,7 +121,7 @@ export class DashComponent implements OnInit {
     this.optionLabel = this.dataCenters[this.No].name;
     this.dataSource.data = this.allServiceList[i];
     this.barData.data = this.barAvg[i];
-    this.stackData.dataset = this.stackDataArr[i];
+    this.stackData.dataset = this.stackDataProdArr[i];
     this.router.navigate(['/dash']);
   }
 }
