@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {PaymentsComponent} from './payments/payments.component';
 import {SingleAccountComponent} from './single-account/single-account.component';
 import {DashComponent} from './dash/dash.component';
+import {IpayComponent} from './ipay/ipay.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,22 @@ const routes: Routes = [
         path: ':id/:label',
         component: SingleAccountComponent,
         data: {animation: 'detail'}
+      },
+    ]
+
+  },
+  {
+    path: 'ipay',
+    component: IpayComponent,
+    children: [
+      // {
+      //   path: '',
+      //   component: DashComponent,
+      //   data: {animation: 'detail'}
+      // },
+      {
+        path: ':id/:label',
+        component: SingleAccountComponent
       },
     ]
 

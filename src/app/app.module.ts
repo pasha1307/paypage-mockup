@@ -39,9 +39,14 @@ import { FdoughComponent } from './Fusion/fdough/fdough.component';
 import { BarSimpleComponent } from './Fusion/bar-simple/bar-simple.component';
 import { StackComponent } from './Fusion/stack/stack.component';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
+// import * as TimeSeries from 'fusioncharts/fusioncharts.timeseries';
+import TimeSeries from 'fusioncharts/viz/timeseries';
 import {NgxDaterangepickerMd} from 'ngx-daterangepicker-material';
+import { DrangePipe } from './drange.pipe';
+import { IpayComponent } from './ipay/ipay.component';
 
-FusionChartsModule.fcRoot(FusionCharts, Column2D, Pie2d, Doughnut2d, StackedColumn2d, Charts, FusionTheme);
+FusionChartsModule.fcRoot(FusionCharts, Column2D, Pie2d, Doughnut2d, StackedColumn2d, Charts, FusionTheme, TimeSeries);
+// FusionCharts.addDep(TimeSeries);
 
 @NgModule({
   declarations: [
@@ -59,7 +64,9 @@ FusionChartsModule.fcRoot(FusionCharts, Column2D, Pie2d, Doughnut2d, StackedColu
     FusionpieComponent,
     FdoughComponent,
     BarSimpleComponent,
-    StackComponent
+    StackComponent,
+    DrangePipe,
+    IpayComponent
   ],
   imports: [
     BrowserModule,

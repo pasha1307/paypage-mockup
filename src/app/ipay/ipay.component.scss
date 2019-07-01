@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .sidenav-container {
 }
 .sidenav {
@@ -6,4 +7,15 @@
 }
 .container-content {
   background-color: pink;
+=======
+.sidenav {
+  margin-top: 90px;
+  max-width: 400px;
+  mat-form-field {
+    width: 100%;
+  }
+}
+.content-wrap {
+  background: rgba(0,0,0,.1);
+>>>>>>> 611f7d76f9c06876807747b28429219a2aed0ccc
 }
